@@ -7,10 +7,10 @@ if ( $("#savings-chart").length ) {
   var data = {
       //Years
       labels: [0,1,2,3,4,5,6,7,8,9,10],
-      //With Interest
+      // Principal With Interest
       datasets: [
           {
-              label: "With Interest",
+              label: "Principal With Interest",
               fill: false,
               lineTension: 0.1,
               backgroundColor: "rgb(0, 100, 0)",
@@ -30,9 +30,9 @@ if ( $("#savings-chart").length ) {
               pointHitRadius: 10,
               data: [1000, 2279, 3623, 5036, 6522, 8083, 9725, 11450, 13264, 15171, 17175 ],
           },
-          //Without Interest
+          //Principal
           {
-              label: "Without Interest",
+              label: "Principal",
               fill: false,
               lineTension: 0.1,
               backgroundColor: "rgb(255, 0, 0)",
@@ -65,7 +65,7 @@ if ( $("#savings-chart").length ) {
   
   
   //Add this on Page Load
-  $("#savings-results").append("Change the fields on your left to recalculate.");
+  $("#savings-results").append("Change the fields on your left to calculate your projected savings.");
   
   /*Savings Calculator
   
@@ -198,8 +198,15 @@ if ( $("#savings-chart").length ) {
       console.log("Here is the amount for the last year without interest.");
       console.log(last_year_sum_no_interest);
   
-  
-      //Append your savings to DOM
+      //Append Savings to DOM
+
+     //Message for monthly contributions
+     if (n == 12) {
       $("#savings-results").append("Well done! After " + t + " years of savings at an annual interest rate of " + r_percentage + "% and monthly contributions of $" + PMT + ", you will have saved " + "<strong style='color: green'>$" + last_year_sum_interest + "</strong>" + ". Without any interest, you would have only saved " + "<strong style='color:red'>$" + last_year_sum_no_interest+ "</strong>" + ".");
+     //Message for yearly contributions
+     } else if (n = 1) {
+       $("#savings-results").append("Well done! After " + t + " years of savings at an annual interest rate of " + r_percentage + "% and yearly contributions of $" + PMT + ", you will have saved " + "<strong style='color: green'>$" + last_year_sum_interest + "</strong>" + ". Without any interest, you would have only saved " + "<strong style='color:red'>$" + last_year_sum_no_interest+ "</strong>" + ".");
+
+     };
   })
 }
