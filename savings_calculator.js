@@ -91,6 +91,12 @@ if ( $("#savings-chart").length ) {
 
   // On page load
   document.addEventListener("DOMContentLoaded", function(){
+      // Will take custom param on page load
+      var contributions_amount_params = window.location.href.split("contributions-amount=").pop();
+      if (isNaN(parseInt(contributions_amount_params)) == false) {
+        console.log("Params are " + contributions_amount_params);
+        document.getElementById("start-amount").value = "$" + contributions_amount_params;
+      }
       console.log("Page load complete.");
       $("#savings-results").append().empty();
       //Remove from DOM on each change
